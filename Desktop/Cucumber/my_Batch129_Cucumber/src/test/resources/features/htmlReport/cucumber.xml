@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="29.969" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="US003_Amazon_Testi" name="TC01_Amazonda_Urun_aratma" time="14.052">
+<system-out><![CDATA[
+Given kullanici_"amazon_Url"_sayfasina_gider................................passed
+And arama_kutusunda_"iphone"_aratir.........................................passed
+And basligin "iphone" icerdigini dogrular...................................passed
+]]></system-out>
+</testcase>
+<testcase classname="US003_Amazon_Testi" name="TC03_Amazonda_Urun_aratma" time="15.55">
+<system-out><![CDATA[
+Given kullanici_"amazon_Url"_sayfasina_gider................................passed
+And arama_kutusunda_"nokia"_aratir..........................................passed
+And basligin "nokia" icerdigini dogrular....................................passed
+]]></system-out>
+</testcase>
+</testsuite>
