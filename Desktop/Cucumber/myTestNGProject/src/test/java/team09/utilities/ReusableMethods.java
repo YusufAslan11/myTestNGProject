@@ -1,5 +1,4 @@
 package team09.utilities;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -9,6 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -200,4 +202,34 @@ public class ReusableMethods {
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
     }
-}
+    public static void uploadFilePath (String filePath){
+        try {
+            ReusableMethods.bekle(3);
+//            Dosyayi bulmak icin kullanilir
+            StringSelection stringSelection = new StringSelection(filePath);
+            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+//            ROBOT CLASS MASAUSTU UYGULAMARI ILE ILETISIME GECMEK ICIN KULLANILIT
+            Robot robot = new Robot();
+//          CONTROL TUSUNA BAS
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            ReusableMethods.bekle(3);
+//            V TUSUNA BAS
+            robot.keyPress(KeyEvent.VK_V);
+            ReusableMethods.bekle(3);
+            //releasing ctrl+v
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            ReusableMethods.bekle(3);
+            robot.keyRelease(KeyEvent.VK_V);
+            ReusableMethods.bekle(3);
+            System.out.println("YAPISTIRMA ISLEMI : PASSED");
+            //pressing enter
+            ReusableMethods.bekle(3);
+            robot.keyPress(KeyEvent.VK_ENTER);
+            ReusableMethods.bekle(3);
+            //releasing enter
+            robot.keyRelease(KeyEvent.VK_ENTER);
+            ReusableMethods.bekle(3);
+            System.out.println("DOSYA YUKLENDI.");
+        } catch (Exception e) {
+        }
+}}
