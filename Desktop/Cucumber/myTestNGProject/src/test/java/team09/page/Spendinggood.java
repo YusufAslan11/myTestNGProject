@@ -128,6 +128,48 @@ public class Spendinggood {
     @FindBy(id="product_tags")
     public WebElement textTag;
 
+    @FindBy(id="catalog_visibility")
+    public WebElement catalogVisibilityDdm;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[1]")
+    public WebElement inventory17;
+
+    @FindBy(id="sku")
+    public WebElement sku17;
+
+    @FindBy(id="manage_stock")
+    public WebElement stokClick17;
+
+    @FindBy(id="stock_qty")
+    public WebElement stockQuantity17;
+
+    @FindBy (id="stock_status")
+    public WebElement stockStatus17;
+
+    @FindBy(xpath = "//*[@class='wcfmfa fa-truck']")
+    public WebElement shipping;
+
+    @FindBy(id="weight")
+    public WebElement weight17;
+
+    @FindBy(id="length")
+    public WebElement length17;
+
+    @FindBy(id="height")
+    public WebElement height17;
+
+    @FindBy(xpath = "//*[@id=\"wcfm_products_manage_form_attribute_head\"]/div/text()")
+    public WebElement attributes17;
+
+
+
+
+
+
+
+    @FindBy(id="wcfm_products_simple_submit_button")
+    public WebElement submitButton17;
+
 
     //-------------------------------------------------
     //18

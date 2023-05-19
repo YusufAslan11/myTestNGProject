@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team09.page.Spendinggood;
 import team09.utilities.ConfigReader;
@@ -16,6 +18,8 @@ import static team09.utilities.ReusableMethods.bekle;
 
 public class US17_VariableProduct {
     WebDriver driver;
+
+
 
     @Test
     public void test01() { //Kullanıcı register alanını tıklar
@@ -112,32 +116,78 @@ public class US17_VariableProduct {
         bekle(1);
         ReusableMethods.click(spendinggood.lastSelectImg17);
 
-//        Kullanici Categories menusunden secim yapar
+        // Kullanici Categories menusunden secim yapar
 
         action.sendKeys(Keys.PAGE_DOWN).perform();
-
-
         spendinggood.addNewCategories.click();
         bekle(2);
 
-        spendinggood.textSendNewCategorie.sendKeys("Home Furniture123456");
+        //Kullanıcı yeni product brand eklenebilmeli
+        spendinggood.textSendNewCategorie.sendKeys("new computers");
         ReusableMethods.bekle(4);
         action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN);
-
         ReusableMethods.click(spendinggood.categoriesAdd);
+
         action.sendKeys(Keys.PAGE_DOWN);
         bekle(1);
         ReusableMethods.click(spendinggood.brandAdd);
-        try {
-            driver.switchTo().alert().accept();
-        }catch(Exception e){
-            System.out.println("Alert");
+        bekle(2);
 
-        }
-bekle(2);
-        spendinggood.writeBrandText.sendKeys("NEW Furtinure1");
+        spendinggood.writeBrandText.sendKeys("computer_lenovo");
+        bekle(1);
+
+        action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN);
         bekle(2);
         ReusableMethods.click(spendinggood.brandAdd2);
+
+        //Kullanıcı Tags ekler
+
+        spendinggood.textTag.sendKeys("Deneme TAG",Keys.TAB);
+
+
+        //Kullanıcı Catalog Visibility seçeneklerini seçer
+
+        Select select1=new Select(spendinggood.catalogVisibilityDdm);
+        select1.selectByVisibleText("Shop only");
+        bekle(1);
+
+        //Inventory işlemleri yapılır
+        bekle(3);
+
+        spendinggood.inventory17.click();
+        spendinggood.sku17.sendKeys("SKU125",Keys.TAB);
+
+        bekle(1);
+
+        spendinggood.stokClick17.click();
+
+        spendinggood.stockQuantity17.sendKeys("100");
+
+        Select select2=new Select(spendinggood.stockStatus17);
+        select2.selectByVisibleText("instock");
+
+        spendinggood.shipping.click();
+
+        spendinggood.weight17.sendKeys("25",Keys.TAB);
+        spendinggood.length17.sendKeys("30",Keys.TAB);
+        spendinggood.height17.sendKeys("20",Keys.TAB);
+
+        //Attributes işlemleri yapılır
+
+        spendinggood.attributes17.click();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
