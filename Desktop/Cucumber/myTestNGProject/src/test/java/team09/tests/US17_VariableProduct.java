@@ -1,5 +1,7 @@
 package team09.tests;
 
+import com.github.javafaker.Faker;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -18,12 +20,8 @@ import static team09.utilities.ReusableMethods.bekle;
 
 public class US17_VariableProduct {
     WebDriver driver;
-
-
-
     @Test
-    public void test01() { //Kullanıcı register alanını tıklar
-
+    public void test01() {
         //Kullanıcı  https://spendinggood.com/ sayfasına gider
         Driver.getDriver().get(ConfigReader.getProperty("Spendinggood_Url"));
         bekle(1);
@@ -100,7 +98,8 @@ public class US17_VariableProduct {
         action.sendKeys(Keys.PAGE_UP).sendKeys(Keys.ARROW_UP).sendKeys(Keys.ARROW_UP).build().perform();
         bekle(3);
 
-    //Product Title, Short Description ve Description yazılabildiği görülür
+        //Product Title, Short Description ve Description yazılabildiği görülür
+
 
      // Resim eklenir
 
@@ -123,7 +122,9 @@ public class US17_VariableProduct {
         bekle(2);
 
         //Kullanıcı yeni product brand eklenebilmeli
-        spendinggood.textSendNewCategorie.sendKeys("new computers");
+        Faker faker=new Faker();
+        String newBrand17=faker.funnyName().name();
+        spendinggood.textSendNewCategorie.sendKeys(newBrand17);
         ReusableMethods.bekle(4);
         action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN);
         ReusableMethods.click(spendinggood.categoriesAdd);
@@ -132,8 +133,8 @@ public class US17_VariableProduct {
         bekle(1);
         ReusableMethods.click(spendinggood.brandAdd);
         bekle(2);
-
-        spendinggood.writeBrandText.sendKeys("computer_lenovo");
+        String newBrand2=faker.funnyName().name();
+        spendinggood.writeBrandText.sendKeys(newBrand2);
         bekle(1);
 
         action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN);
@@ -142,7 +143,7 @@ public class US17_VariableProduct {
 
         //Kullanıcı Tags ekler
 
-        spendinggood.textTag.sendKeys("Deneme TAG",Keys.TAB);
+        spendinggood.textTag.sendKeys("Deneme TAG211",Keys.TAB);
 
 
         //Kullanıcı Catalog Visibility seçeneklerini seçer
@@ -161,20 +162,32 @@ public class US17_VariableProduct {
 
         spendinggood.stokClick17.click();
 
-        spendinggood.stockQuantity17.sendKeys("100");
+        spendinggood.stockQuantity17.sendKeys("100",Keys.TAB);
 
-        Select select2=new Select(spendinggood.stockStatus17);
-        select2.selectByVisibleText("instock");
+
+        Select select2=new Select(spendinggood.backOrders17);
+        select2.selectByVisibleText("Allow");
 
         spendinggood.shipping.click();
 
         spendinggood.weight17.sendKeys("25",Keys.TAB);
-        spendinggood.length17.sendKeys("30",Keys.TAB);
+        spendinggood.width17.sendKeys("30",Keys.TAB);
         spendinggood.height17.sendKeys("20",Keys.TAB);
+
+        Select selecetPT =new Select(spendinggood.processingTime17);
+        selecetPT.selectByVisibleText("1-2 weeks");
 
         //Attributes işlemleri yapılır
 
-        spendinggood.attributes17.click();
+      ReusableMethods.click(spendinggood.attributes18);
+      ReusableMethods.click(spendinggood.colorClick17);
+      ReusableMethods.click(spendinggood.colorAddNEW17);
+
+      driver.switchTo().alert().sendKeys("blue");
+      driver.switchTo().alert().accept();
+
+
+      //  Select selectColor=new Select(spendinggood)
 
 
 
